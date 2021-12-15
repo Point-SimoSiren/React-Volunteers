@@ -3,9 +3,9 @@ import './App.css'
 
 function App() {
 
-const [volunteers, setVolunteers] = useState([{id:1, name: "Jannika", phone: "12312312"}, {id:2, name: "Anselmi", phone: "333444333"}])
+const [volunteers, setVolunteers] = useState([])
 const [idShowPhone, setIdShowPhone] = useState(0)
-/*
+
 useEffect(() => {
   fetch("http://localhost:8000/api/volunteers")
   .then(res => res.json())
@@ -13,7 +13,7 @@ useEffect(() => {
 }
   , []
 )
-*/
+
 
 console.log(idShowPhone)
 console.log(volunteers)
