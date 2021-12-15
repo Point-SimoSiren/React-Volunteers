@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react'
+import logo from './logo.svg'
+import './App.css'
+import Phone from './Phone'
 
 function App() {
+
+
+const [volunteers, setVolunteers] = useState([])
+const [idShowPhone, setIdShowPhone] = useState("")
+
+
+useEffect(() => {
+  fetch("http://localhost:8000/api/volunteers")
+  .then(res => res.json())
+  .then(vastaus => setVolunteers(vastaus))
+}
+  , []
+)
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     {
+       volunteers && volunteers.map(v => 
+
+          <div key={v.id}>
+
+            <h4>{v.name}</h4>
+
+            <Phone volunteer={v} idShowPhone={idShowPhone} />
+
+          </div>
+        )
+     }
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
